@@ -24,12 +24,12 @@ class EDO(object):
 
         for valor in H:
             if valor['H'] is None:
-                self.H.append({'H':  None,
+                self.H.append({'H': None,
                                'ti': mp.mpf(valor['ti']),
                                'tf': mp.mpf(valor['tf'])})
                 return
 
-            self.H.append({'H':  mp.mpf(valor['H']),
+            self.H.append({'H': mp.mpf(valor['H']),
                            'ti': mp.mpf(valor['ti']),
                            'tf': mp.mpf(valor['tf'])})
 
@@ -45,7 +45,6 @@ class EDO(object):
             result = mp.fmul(mp.fneg(0.05), t)
             exponencial = mp.exp(result)
             result = mp.fmul(0.3, exponencial)
-            mp.fmul(result, mp.sin(t))
 
             return mp.fmul(result, mp.sin(t))
 

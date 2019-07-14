@@ -47,7 +47,7 @@ O método foi implementado utilizando a linguagem de programação *Python 3.6.8
 ### Dependências
 
 * Utilizando o *pip* para instalação de algumas dependências:
-    `pip install -r requirements.txt`
+    `pip3 install -r requirements.txt`
 
     O arquivo *requirements.txt* encontra-se na pasta raiz do projeto. Caso não tenha o *pip* instalado, consulte: <https://pypi.org/project/pip/>
 
@@ -113,6 +113,56 @@ O código-fonte do projeto encontra-se na pasta `\src`. Para visualizar a ajuda,
 
         `python3 main.py -x 1`
         ![alt text](examples/a_x1.png)
+
+* **Caso 2**:
+
+    - <img src="https://latex.codecogs.com/gif.latex?\inline&space;x(0)&space;=&space;0.0" title="x(0) = 0.0" />
+
+        `python3 main.py -x 0  -T 6.5 --func_h`
+        ![alt text](examples/b_x0.png)
+
+    - <img src="https://latex.codecogs.com/gif.latex?\inline&space;x(0)&space;=&space;1.0" title="x(0) = 1.0" />
+
+        `python3 main.py -x 1 -T 6.5 --func_h`
+        ![alt text](examples/b_x1.png)
+
+* **Caso 3**:
+
+    - <img src="https://latex.codecogs.com/gif.latex?\inline&space;x(0)&space;=&space;0.0" title="x(0) = 0.0" />
+
+        `python3 main.py -x 0 -T 6.51 --func_h`
+        ![alt text](examples/c_x0.png)
+
+    - <img src="https://latex.codecogs.com/gif.latex?\inline&space;x(0)&space;=&space;1.0" title="x(0) = 1.0" />
+
+        `python3 main.py -x 1 -T 6.51 --func_h`
+        ![alt text](examples/c_x1.png)
+
+* **Caso 4**:
+
+    - <img src="https://latex.codecogs.com/gif.latex?\inline&space;x(0)&space;=&space;0.0" title="x(0) = 0.0" />
+
+        `python3 main.py -x 0 -T 7.45 --func_h`
+        ![alt text](examples/d_x0.png)
+
+    - <img src="https://latex.codecogs.com/gif.latex?\inline&space;x(0)&space;=&space;1.0" title="x(0) = 1.0" />
+
+        `python3 main.py -x 1 -T 7.45 --func_h`
+        ![alt text](examples/d_x1.png)
+
+* **Caso 5**:
+
+    - <img src="https://latex.codecogs.com/gif.latex?\inline&space;x(0)&space;=&space;0.0" title="x(0) = 0.0" />
+
+        `python3 main.py -x 0 -T 7.452 --func_h`
+        ![alt text](examples/e_x0.png)
+
+    - <img src="https://latex.codecogs.com/gif.latex?\inline&space;x(0)&space;=&space;1.0" title="x(0) = 1.0" />
+
+        `python3 main.py -x 1 -T 7.452 --func_h`
+        ![alt text](examples/e_x1.png)
+
+
 
 ### Referências
 
