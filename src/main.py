@@ -40,19 +40,17 @@ if __name__ == "__main__":
     parser.add_argument("-t", type=float, default=0,
                         help="Valor de t0 (default = 0.0)")
     parser.add_argument("-T", type=float, default=7,
-                        help="Valor de T (default = 6.5)")
+                        help="Valor de T (default = 7.0)")
     parser.add_argument("-H", type=str, default=[],
                         help="Valor da função H(t) em intervalores de t (Valores fixos) \
                         (default = \"{'H': 0, 'ti': 0, 'tf': 300}\")", action='append')
     parser.add_argument("--func_h", action="store_true", default=False,
                         help="Usar a funcao H(t) definida na classe EDO")
 
-    parser.add_argument("-i", type=float, default=0.1,
+    parser.add_argument("-i", type=float, default=0.05,
                         help="Valor incrementado ao tempo t (passo) em cada interação (default = 0.1)")
     parser.add_argument("-p", type=int, default=None,
                         help="Precisao em número de cadas decimais (Mpmath default = 53)")
-    parser.add_argument("-f", type=str, default=None,
-                        help="Nome do arquivo de saida")
 
     args = parser.parse_args()
 
@@ -72,8 +70,7 @@ if __name__ == "__main__":
                   'T': args.T,
                   'H': func_H,
                   'passo': args.i,
-                  'precisao': args.p,
-                  'arquivo': args.f}
+                  'precisao': args.p}
 
     print("Configuração:", argumentos)
 

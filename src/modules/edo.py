@@ -40,8 +40,9 @@ class EDO(object):
             return mp.mpf(0.3) * mp.sin(t)
 
         if t <= 300:
-            return mp.mpf(0.3) * (mp.euler**((-0.05) * t)) * mp.sin(t)
+
+            return mp.mpf(0.3) * (mp.power(mp.euler, mp.mpf(-0.05) * t)) * mp.sin(t)
 
     def edo(self, x, t, H):
         valor = (6 * x + H) / self.T
-        return (-1 * x) + ((mp.tanh(valor) + (mp.tanh(valor)**2)) / (1 + (mp.tan(valor)**3)))
+        return (mp.mpf(-1) * x) + ((mp.tanh(valor) + (mp.tanh(valor)**2)) / (1 + (mp.tan(valor)**3)))
