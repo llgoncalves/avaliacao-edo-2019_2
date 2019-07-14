@@ -8,6 +8,7 @@ import mpmath as mp
 
 
 class EDO(object):
+    """Define um equação diferencia."""
     H = []
     xt = []
     t = []
@@ -32,17 +33,31 @@ class EDO(object):
                            'ti': mp.mpf(valor['ti']),
                            'tf': mp.mpf(valor['tf'])})
 
+    #: Define a função H(t)
     def h(self, t):
         if t < 100:
             return 0
 
         if t <= 200:
-            return mp.mpf(0.3) * mp.sin(t)
+            return mp.fmul(0.3, mp.sin(t))
 
         if t <= 300:
+            result = mp.fmul(mp.fneg(0.05), t)
+            exponencial = mp.exp(result)
+            result = mp.fmul(0.3, exponencial)
+            mp.fmul(result, mp.sin(t))
 
-            return mp.mpf(0.3) * (mp.power(mp.euler, mp.mpf(-0.05) * t)) * mp.sin(t)
+            return mp.fmul(result, mp.sin(t))
 
+    #: Obtem o valor de dx/dt
     def edo(self, x, t, H):
-        valor = (6 * x + H) / self.T
-        return (mp.mpf(-1) * x) + ((mp.tanh(valor) + (mp.tanh(valor)**2)) / (1 + (mp.tan(valor)**3)))
+        valor = mp.fmul(6.0, x)
+        valor = mp.fadd(valor, H)
+        valor = mp.fdiv(valor, self.T)
+
+        result = mp.fadd(mp.tanh(valor),
+                         mp.power(mp.tanh(valor), 2.0))
+        result = mp.fdiv(result,
+                         mp.fadd(1, mp.power(mp.tan(valor), 3.0)))
+
+        return mp.fadd(mp.fneg(x), result)

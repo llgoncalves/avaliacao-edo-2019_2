@@ -16,15 +16,15 @@ matplotlib.use('tkagg')
 
 
 def main(args):
+    #: Instância da  RungeKutta() com a configuração informada por parâmetro
     RK = RungeKutta(args['passo'], args['x0'], args['t0'], args['T'],
                     args['H'], args['precisao'])
 
+    #: Calcula o resultado
     xt, t = RK.run()
 
-    if args['precisao'] is None:
-        args['precisao'] = 53
+    #: Plota o gráfico x(t) vs t
     fig, ax = plt.subplots()
-
     ax.plot(t, xt)
 
     ax.set(xlabel='t', ylabel='x(t)', title='Diagrama x(t) vs t')
@@ -34,6 +34,7 @@ def main(args):
 
 
 if __name__ == "__main__":
+    #: Definindo argumentos
     parser = argparse.ArgumentParser()
     parser.add_argument("-x", type=float, default=1,
                         help="Valor de x0 (default = 0.0)")
@@ -54,21 +55,24 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    func_H = None
+    funcH = None
+
+    #: Guarda em funcH o valor de H(t)
     if not args.func_h:
-        func_H = []
+        funcH = []
 
         for H in args.H:
-            func_H.append(literal_eval(H))
-        if len(func_H) == 0:
-            func_H.append({'H': 0, 'ti': 0, 'tf': 300})
+            funcH.append(literal_eval(H))
+        if len(funcH) == 0:
+            funcH.append({'H': 0, 'ti': 0, 'tf': 300})
+    #: Usar o método h da class EDO para obter o valor de H(t)
     else:
-        func_H = [{'H': None, 'ti': 0, 'tf': 300}]
+        funcH = [{'H': None, 'ti': 0, 'tf': 300}]
 
     argumentos = {'x0': args.x,
                   't0': args.t,
                   'T': args.T,
-                  'H': func_H,
+                  'H': funcH,
                   'passo': args.i,
                   'precisao': args.p}
 
